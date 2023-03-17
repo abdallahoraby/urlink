@@ -1,0 +1,476 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Urlink APIs",
+        "description": "Urlink Apis to facilitate the testing process ...",
+        "termsOfService": "",
+        "contact": {
+            "email": "fahad@fcode.sa"
+        },
+        "license": {
+            "name": "Private license belongs to Fcode Company",
+            "url": "fahad@fcode.sa"
+        },
+        "version": "1.0.0"
+    },
+    "host": "127.0.0.1:8000/api/",
+    "basePath": "/",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "register": {
+            "post": {
+                "tags": [
+                    "Users/Auth"
+                ],
+                "summary": "Register",
+                "operationId": "register",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "user name",
+                        "required": true,
+                        "type": "string",
+                        "format": "varchar"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "user email",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "user password",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "login": {
+            "post": {
+                "tags": [
+                    "Users/Auth"
+                ],
+                "summary": "Login",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "user email",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "user password",
+                        "required": true,
+                        "type": "string",
+                        "format": "password"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "user/profile/get": {
+            "get": {
+                "tags": [
+                    "Users/Data"
+                ],
+                "summary": "Profile",
+                "operationId": "user profile",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "user/profile/update": {
+            "post": {
+                "tags": [
+                    "Users/Data"
+                ],
+                "summary": "Profile",
+                "operationId": "Update Profile",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "user name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "_method",
+                        "in": "formData",
+                        "description": "method = PUT",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "formData",
+                        "description": "first name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "formData",
+                        "description": "last name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "formData",
+                        "description": "mobile",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "avatar",
+                        "in": "formData",
+                        "description": "Profile Pic",
+                        "required": true,
+                        "type": "file",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "user/landing-page/get/{id}": {
+            "get": {
+                "tags": [
+                    "Users/LandingPage"
+                ],
+                "summary": "Landing Page",
+                "operationId": "user Landing Page",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "optional,\n     * get lading page data by id",
+                        "type": "integer",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "user/landing-page/create": {
+            "post": {
+                "tags": [
+                    "Users/LandingPage"
+                ],
+                "summary": "Landing Page",
+                "operationId": "Create Landing page",
+                "parameters": [
+                    {
+                        "name": "account_type",
+                        "in": "formData",
+                        "description": "account type",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "page_name",
+                        "in": "formData",
+                        "description": "page_name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "page_title",
+                        "in": "formData",
+                        "description": "page title",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "page_contact_email",
+                        "in": "formData",
+                        "description": "page contact email",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "page_contact_phone",
+                        "in": "formData",
+                        "description": "page contact phone",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "country",
+                        "in": "formData",
+                        "description": "country",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "city",
+                        "in": "formData",
+                        "description": "city",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "page_profile_icon",
+                        "in": "formData",
+                        "description": "profile icon",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "page_profile_banner",
+                        "in": "formData",
+                        "description": "profile banner",
+                        "required": true,
+                        "type": "file",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "page_brief",
+                        "in": "formData",
+                        "description": "page brief",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "page_desc",
+                        "in": "formData",
+                        "description": "page desc",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "user/landing-page/update": {
+            "post": {
+                "tags": [
+                    "Users/LandingPage"
+                ],
+                "summary": "landing page",
+                "operationId": "Update landing page",
+                "parameters": [
+                    {
+                        "name": "_method",
+                        "in": "formData",
+                        "description": "method = PUT",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "account_type",
+                        "in": "formData",
+                        "description": "account type",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "page_name",
+                        "in": "formData",
+                        "description": "page_name",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "page_title",
+                        "in": "formData",
+                        "description": "page title",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "page_contact_email",
+                        "in": "formData",
+                        "description": "page contact email",
+                        "required": true,
+                        "type": "string",
+                        "format": "email"
+                    },
+                    {
+                        "name": "page_contact_phone",
+                        "in": "formData",
+                        "description": "page contact phone",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "country",
+                        "in": "formData",
+                        "description": "country",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "city",
+                        "in": "formData",
+                        "description": "city",
+                        "required": true,
+                        "type": "string",
+                        "format": "string"
+                    },
+                    {
+                        "name": "page_profile_icon",
+                        "in": "formData",
+                        "description": "profile icon",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "page_profile_banner",
+                        "in": "formData",
+                        "description": "profile banner",
+                        "required": true,
+                        "type": "file",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "page_brief",
+                        "in": "formData",
+                        "description": "page brief",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "page_desc",
+                        "in": "formData",
+                        "description": "page desc",
+                        "required": true,
+                        "type": "string",
+                        "format": "string",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {},
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Urlink website",
+        "url": "http..."
+    }
+}

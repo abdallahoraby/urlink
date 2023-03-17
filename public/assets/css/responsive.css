@@ -1,0 +1,499 @@
+
+@media (min-width: 1920px) {
+
+
+}
+
+/* Normal desktop :1170px. */
+@media (min-width: 1170px) and (max-width: 1349px) {
+
+}
+
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1169px) {
+}
+
+
+/* Tablet desktop :768px. */
+@media (min-width: 992px){
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-nav {
+        float: right;
+        width: 100%;
+    }
+
+}
+
+/* small mobile :320px. */
+@media (max-width: 767px) {
+    body {
+        padding-top: 63px;
+    }
+    .xs-hidden{
+        display: none;
+    }
+    .lg-hidden{
+        display: block;
+    }
+    .padd-40 {
+        padding: 15px 0;
+    }
+    .padd-80 {
+        padding: 35px 0;
+    }
+    .padd-60 {
+        padding: 35px 0;
+    }
+    .invoice-mob-btn{
+        position: relative;
+        left: -30px;
+    }
+    .invoice-mob-btn .main-grn-btn{
+        font-size: 12px;
+    }
+    .navbar-brand img {
+        margin-right: 0;
+    }
+    .navbar-brand {
+        margin-right: 0;
+    }
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+    .navbar-nav .dropdown .dropdown-menu {
+        background: #f0f0f0;
+        color: #000;
+        border: 1px solid#e3e3e3;
+    }
+    .mian-sec-title {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .intro-area > .container > .row {
+        align-items: center;
+        padding-bottom: 30px;
+    }
+    .intro-area {
+        padding: 0 0 0px;
+    }
+    .intro-sec-info {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .intro-sec-info h3 {
+        font-size: 21px;
+        line-height: 30px;
+    }
+    .intro-sec-info p {
+        font-size: 14px;
+        color: #636363;
+        line-height: 23px;
+        margin: 10px 0;
+        width: 100%;
+    }
+    .xs-order-1{
+        order: 1;
+    }
+    .xs-order-2{
+        order: 2;
+    }
+    .intro-sec-img {
+        margin-bottom: 15px;
+    }
+    .intro-sec-img img {
+        width: 100%;
+        height: 310px;
+        object-fit: scale-down;
+    }
+    .mian-sec-title.whd-30 {
+        width: 90%;
+    }
+    .mian-sec-title h3 {
+        font-size: 17px;
+        line-height: 25px;
+    }
+    .logos-list {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+    }
+    .logo-card {
+        height: 50px;
+        flex: 0 0 31.8%;
+    }
+    .about-rt-img {
+        width: 100%;
+        height: 308px;
+    }
+    .mian-sec-title h6{
+        font-size: 12px;
+        margin-bottom: 7px;
+    }
+    .mian-sec-title.st2 h3 {
+        font-size: 19px;
+        line-height: 28px;
+    }
+    .head-st-txt {
+        width: 100%;
+    }
+    .head-st-txt p {
+        font-size: 15px;
+    }
+    .page-steps-area .mian-sec-title {
+        margin-top: 0px;
+    }
+    .page-steps-area .container {
+        border-radius: 20px;
+        padding: 30px 15px;
+    }
+    .stp-card-item {
+        flex: 100% 0 0;
+    }
+    .card-txt h3 {
+        font-size: 16px;
+    }
+    .stp-card-item:not(:last-child)::after{
+        display: none;
+    }
+    .mian-sec-title.whd-35 {
+        width: 100%;
+    }
+    .footer-links {
+        display: block;
+        text-align: center;
+    }
+    .footer-links .ft-logo img {
+        width: 130px;
+        height: 32px;
+        object-fit: scale-down;
+        margin-bottom: 10px;
+    }
+    .ft-pages ul li a {
+        font-size: 13px;
+    }
+    .footer-area {
+        padding: 20px 0 3px 0;
+    }
+    .padd-50 {
+        padding: 20px 0;
+    }
+    .hd-left{
+        margin-right: 0px;
+        border-top: 1px solid#eee;
+        padding-top: 10px;
+    }
+    .hd-left .reg-log-buttons{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .hd-left .reg-log-buttons a {
+        font-size: 12px;
+        padding: 10px 10px;
+    }
+    .navbar,.navbar.active {
+        padding: 5px 10px;
+    }
+    .navbar-collapse {
+        margin-bottom: 10px;
+    }
+    .contact-page {
+        padding-top: 22px;
+        position: relative;
+    }
+    .contact-opt .list-inline-item:not(:last-child) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .contact-opt {
+        text-align: right;
+        margin-top: 5px;
+        padding: 15px 0;
+    }
+    .sec-div .prv-sec-title h3 {
+        width: 100%;
+        font-size: 18px;
+        line-height: 29px;
+        margin-bottom: 10px;
+    }
+    /* Login & Register */
+    .reg-main-form {
+        padding: 20px 10px 20px;
+    }
+    .forget-pass-img .reg-side-img {
+        width: 100%;
+        min-height: 100%;
+        height: 320px;
+        padding-top: 95px;
+    }
+    .profile-link{
+        width: 100%;
+    }
+    .profile-link a {
+        width: 100%;
+    }
+    /* User Landing Page */
+    .no-top-mrg {
+        margin-top: -122px;
+    }
+    .lndg-main-logo img {
+        width: 100px;
+        margin-bottom: 15px;
+    }
+    .lndg-sec {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    .lndg-main-top-sec{
+        height: 260px;
+        margin-bottom: 140px;
+        background-size: cover;
+    }
+    .lndg-main-top-sec .user-card img{
+        width: 120px;
+        height: 120px;
+    }
+    .user-card {
+        position: absolute;
+        right: 10%;
+        bottom: -132px;
+        text-align: center;
+        z-index: 2;
+        width: 80%;
+    }
+    .lndg-main-top-sec::after{
+        bottom: -1px;
+    }
+    .lndg-social-sec {
+        max-width: 100%;
+        padding: 20px 10px;
+    }
+    .bg-rond .social-item > a {
+        width: 45px;
+        height: 45px;
+        line-height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .bg-rond .social-item > a i {
+        font-size: 19px;
+    }
+    .lndg-main-title-sec {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+    .sec-card-content p {
+        font-size: 13px;
+        line-height: 23px;
+        padding: 0 0px;
+    }
+    .lndg-main-title-sec h3 {
+        font-size: 16px;
+        font-weight: 800;
+    }
+    .lndg-main-title-sec h6{
+        font-size: 12px;
+        min-width: 100px;
+        margin-bottom: 7px;
+    }
+    .sec-card-content img {
+        width: 100%;
+        height: 230px;
+        border-radius: 10px;
+    }
+    .owl-carousel .owl-item .gl-img img {
+        border-radius: 10px;
+    }
+    .owl-dots .owl-dot {
+        width: 10px;
+        height: 10px;
+    }
+    .owl-dots {
+        margin-top: 5px;
+    }
+    .lndg-contact-me {
+        padding: 15px;
+    }
+    .lndg-contact-me {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 9;
+        height: auto;
+        width: 100%;
+    }
+    .contact-buttons{
+        gap: 10px;
+    }
+    .contact-buttons .btn {
+        min-width: 165px;
+        padding: 13px 10px;
+        font-size: 13px;
+    }
+    .lndg-footet {
+        padding: 13px;
+    }
+    .co-ft-links h4 {
+        font-size: 12px;
+    }
+    .lndg-one-img, .lndg-gallery-imgs{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .landing-page-area.no-top-mrg {
+        margin-top: -65px;
+    }
+    .landing-page-area{
+        margin-bottom: 60px;
+    }
+    .pages-cards .lndg-main-top-sec::after{
+        height: 50px;
+    }
+    .prof-img-name {
+        margin-bottom: 10px;
+    }
+    .card-box {
+        padding: 30px 25px;
+    }
+    .mian-card-box-title{
+        margin-bottom: 15px;
+    }
+    .profile-stc-page {
+        display: block;
+    }
+    .pg-user-info {
+        width: 100%;
+    }
+    .profile-stc-page{
+        padding: 20px;
+    }
+    .stc-card-item {
+        display: block;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .stc-img-icon {
+        margin: auto;
+        margin-bottom: 12px;
+    }
+    .pg-user-info-img {
+        display: block;
+        text-align: center;
+    }
+    .pg-user-info .page-mng-btns .btn {
+        width: 48%;
+    }
+    .pg-user-info-img img {
+        width: 115px;
+        height: 115px;
+        margin-bottom: 20px;
+    }
+    .pg-user-info .page-mng-btns .btn {
+        padding: 13px 15px;
+        text-align: right;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    .pg-stc-item h6 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .pg-stc-item h3 {
+        font-size: 16px;
+    }
+    .pg-user-info-stc-list ul{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .pg-user-info-stc-list ul li{
+        flex: 0 0 100%;
+        padding-right: 0;
+        margin-right: 0;
+        border-right: 0px solid#ddd;
+        margin-bottom: 22px;
+    }
+    .pg-user-info-stc-list ul li.list-inline-item:not(:first-child){
+        padding-right: 0;
+        margin-right: 0;
+        border-right: 0px solid#ddd;
+    }
+    .card-box .col-xs-6 {
+        padding-right: 7px;
+        padding-left: 7px;
+        width: 50%;
+    }
+    .social-stcs .social-stcs-item {
+        text-align: right;
+        flex: 0 0 100%;
+    }
+    .page-mng-btns .btn i{
+        -webkit-text-stroke: initial;
+    }
+    .mian-sec-title h5 {
+        font-size: 14px;
+        line-height: 23px;
+    }
+    .select-acc ul li.list-inline-item:not(:last-child) {
+        margin-left: 0;
+    }
+    .selc-item a{
+        min-width: auto;
+        padding: 20px 5px;
+    }
+    .selc-item h3 {
+        font-size: 15px;
+    }
+    .selc-item .selc-img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+    .select-acc ul li {
+        width: 47%;
+    }
+    .steps-main-list-links ul li a h3 {
+        font-size: 14px;
+        color: #373737;
+    }
+    .add_field_button {
+        font-size: 14px;
+    }
+    .image-uploader .upload-text span {
+        font-size: 13px;
+    }
+    .setup-content .justify-content-center{
+        margin: 0;
+    }
+    .main_tabs_box.card-box {
+        padding: 24px 15px;
+    }
+    .main_tabs_box .main-form.row .form-group {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .stepForm-row::before {
+        top: -42px;
+    }
+    .stepForm-step h4 {
+        font-size: 14px;
+    }
+    .page-add-section .form-check .form-check-label {
+        font-size: 15px;
+    }
+    .page-type > .inputGroup {
+        flex: 0 0 70%;
+        position: relative;
+    }
+    .selc-item .selc-img {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 15px;
+    }
+}
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+}

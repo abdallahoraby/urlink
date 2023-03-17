@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\LandingStyle;
+class LandingStyleController extends Controller
+{
+    public static function defaultStyle(){
+        $defultSyleId = LandingStyle::where('style_default', 1)->first();
+        return $defultSyleId->style_id;
+    }
+
+    public static function getAllStyles(){
+        $styles = LandingStyle::get();
+        return $styles;
+    }
+
+    public static function createNewStyle($styleName, $style_fee, $status, $style_image = null){
+        $newStyle = LandingStyle::create([
+            'style_name' => $styleName,
+            'style_fee' => $style_fee,
+            'status' => $status,
+        ]);
+        return 0;
+    }
+
+    public static function getAvailableStyles($subscription){
+        if($subscription == 'free'){
+            $styles = LandingStyle::where('style_fee', 'free')->where('status', 1)->get();
+        }else if($subscription == 'paid'){
+            $styles = LandingStyle::where('style_fee', 'fee')->where('status', 1)->get();
+        }
+        return $styles;
+    }
+}
