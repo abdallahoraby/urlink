@@ -58,8 +58,7 @@
                                             <tr>
                                             <th>الاسم الكامل</th>
                                             <th>البريدالإلكتروني</th>
-                                            <th>الموبايل</th>
-                                            <th>حالة الاشتراك</th>
+                                            <th> الخطة الحالية</th>
                                             <th>حالة الحساب</th>
                                             <th></th>
 
@@ -67,11 +66,26 @@
                                         </thead>
                                         <tbody>
                                 @foreach($users as $user)
+
                                             <tr>
                                             <td>{{$user->full_name}}</td>
                                             <td>{{$user->email}}</td>
-                                            <td>{{$user->mobile}}</td>
-                                            <td>{{$user->subscription}}</td>
+                                            <td>
+                                                @if( !empty( App\Http\Controllers\Users\PlanSubscriptionController::getActiveUserSubs($user->user_id) ) )
+                                                    @foreach( App\Http\Controllers\Users\PlanSubscriptionController::getActiveUserSubs($user->user_id) as $subscription )
+                                                        {{ Illuminate\Support\Str::limit($subscription->name, 10, '..') }}
+                                                    @endforeach
+                                                @else
+                                                    ---
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                <a href="{{ url('/admin/users/operations/manage-subs/' . $user->user_id ) }}" >
+                                                    <button type="button" class="btn btn-success"> ادارة الاشتراكات </button>
+                                                </a>
+                                            </td>
+
                                             @if($user->status == 1)
                                             <td>نشط</td>
                                             <td><a href="{{ url('/admin/users/operations/activity/' . $user->user_id . '/0') }}" >
@@ -80,13 +94,17 @@
 
                                             @else
                                             <td>موقوف</td>
-                                            <td><a href="{{ url('/admin/users/operations/activity/' . $user->user_id . '/1') }}" >
+                                            <td>
+                                                <a href="{{ url('/admin/users/operations/activity/' . $user->user_id . '/1') }}" >
                                                     <button type="button" class="btn btn-primary">تفعيل الحساب</button>
-                                                </a></td>
+                                                </a>
+                                            </td>
                                             @endif
-                                            <td><a href="{{ url('/admin/users/operations/rule/' . $user->user_id . '/1') }}" >
-                                                <button type="button" class="btn btn-primary">وضع مسؤول</button>
-                                            </a></td>
+                                            <td>
+                                                <a href="{{ url('/admin/users/operations/rule/' . $user->user_id . '/1') }}" >
+                                                    <button type="button" class="btn btn-primary">وضع مسؤول</button>
+                                                </a>
+                                            </td>
 
                                             </tr>
 

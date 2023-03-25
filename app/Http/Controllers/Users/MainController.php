@@ -13,8 +13,12 @@ use App\Http\Controllers\Validator\ValidateController;
 use App\CustomClass\Hashed;
 
 use Bpuig\Subby\Models\Plan;
+use Bpuig\Subby\Models\PlanFeature;
 use App\Models\User;
 use App\Models\Page;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\Users\PlanSubscriptionController;
+
 
 class MainController extends Controller
 {
@@ -50,13 +54,14 @@ class MainController extends Controller
     }
 
     public static function getPlans(){
-        $plans = Plan::select('id', 'tag', 'name', 'description', 'is_active', 'price', 'currency', 'invoice_period', 'invoice_interval')->get();
+        $plans = Plan::select('id', 'tag', 'name', 'description', 'is_active', 'price', 'currency', 'invoice_period', 'invoice_interval')->where('is_active', '=', 1)->whereNull('deleted_at')->get();
         return view('plans', compact('plans'));
     }
 
     function getTest(){
 
-
+       
+        
 
         return 0;
     }

@@ -41,12 +41,19 @@ Route::group(['namespace' => 'Admins', 'middleware' => ['admin', 'relogin'], 'pr
         Route::get('edit-pages', 'AdminsController@editPages');
         Route::get('edit-pages/{pageId}', 'AdminsController@editSinglePage');
         Route::put('update-page', 'AdminsController@updateSinglePage');
+        Route::get('get-plans', 'AdminsController@getAllPlans')->name('get-plans');
+        Route::get('add-plan', 'AdminsController@addPlanView')->name('add-plan');
+        Route::post('add-new-plan', 'AdminsController@addPlan')->name('add-new-plan');
+        Route::get('edit-plan/{plan_id}', 'AdminsController@editPlan')->name('edit-plan');
+        Route::put('update-plan', 'AdminsController@updatePlan')->name('update-plan');
+        Route::get('delete-plan/{plan_id}', 'AdminsController@deletePlan')->name('delete-plan');
     });
 
     Route::group(['prefix' => 'users'],function(){
         Route::get('get', 'AdminsController@getUsers');
         Route::group(['prefix' => 'operations'], function(){
             Route::get('activity/{userId}/{active}', 'AdminsController@updateActivity');
+            Route::get('manage-subs/{user_id}', 'AdminsController@manageUsersSubs');
             Route::get('rule/{userId}/{rule}', 'AdminsController@updateRule');
         });
         Route::post('create', 'AdminsController@createNewUser')->name('createNewUser');
@@ -59,8 +66,8 @@ Route::group(['namespace' => 'Admins', 'middleware' => ['admin', 'relogin'], 'pr
         Route::post('create', 'AdminsController@postCreateStyle')->name('createNewStyle');
 
         Route::get('get', 'AdminsController@getStyles')->name('get_styles');
-
-        /* Route::put('update/{styleId}, AdminsController@updateStyle'); */
+        Route::get('edit-style/{style_id}', 'AdminsController@getStyle')->name('edit-style');
+        Route::put('updateStyle', 'AdminsController@updateStyle')->name('updateStyle');
     });
 });
 
@@ -73,6 +80,7 @@ Route::group(['namespace' => 'Users'],function(){
     Route::get('/privacy', 'MainController@GET_privacy');
     Route::get('/terms', 'MainController@GET_terms');
     Route::get('/plans', 'MainController@getPlans')->name('plans-page');
+    Route::get('payment-verify', 'PlanSubscriptionController@verifyPayment')->name('payment-verify');
 
 
     /*** Test View comment in production ***/
@@ -111,6 +119,7 @@ Route::group(['namespace' => 'Users'],function(){
 
         Route::group(['prefix' => 'landing-page'], function(){
             Route::get('get/{id?}', 'UsersController@GET_landing_page');
+            Route::get('get-my-pages', 'UsersController@getLandingPages')->name('get-my-pages');
             Route::get('create', 'UsersController@GET_CREATE_landing_page')->name('get_create_landing_page');
             Route::post('create', 'UsersController@POST_CREATE_landing_page')->name('post_create_landing_page');
             Route::get('update/{page_id}', 'UsersController@UPDATE_get_landing_page')->name('UPDATE_get_landing_page');
@@ -121,7 +130,11 @@ Route::group(['namespace' => 'Users'],function(){
 
         Route::group(['prefix' => 'subscribe'], function (){
             Route::get('remove/{subscription_id}', 'PlanSubscriptionController@removeSubscription')->name('remove_subscription');
-            Route::get('add/{plan_id}', 'PlanSubscriptionController@addSubscription')->name('add_subscription');
+            Route::get('renew/{subscription_id}', 'PlanSubscriptionController@renewSubscription')->name('renew_subscription');
+            Route::get('add/{plan_id}', 'PlanSubscriptionController@checkOut')->name('add_subscription');
+            Route::post('complete-checkout', 'PlanSubscriptionController@addSubscription')->name('complete-checkout');
+            Route::get('checkSubscriptionExpire', 'PlanSubscriptionController@checkSubscriptionExpire');
+
         });
     });
     Route::get('/{page_name?}', 'UsersController@GET_page');
@@ -133,5 +146,7 @@ Route::group(['namespace' => 'Users'],function(){
 Route::get('/home', 'HomeController@index')->name('home'); */
 
 
-
+Route::domain('{subdomain}.'.config('app.short_url'))->group(function (){
+    Route::get('/', 'LandingPageController@index')->name('landing-index');
+});
 

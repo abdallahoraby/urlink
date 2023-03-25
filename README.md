@@ -166,6 +166,19 @@ Please check the following sources to learn more about Swagger.
 - https://github.com/DarkaOnLine/L5-Swagger/blob/master/README.md
 - https://github.com/DarkaOnLine/L5-Swagger/wiki/Installation-&-Configuration
 
+
+----------------------------
+
+
+# Payment
+
+add this line to .env and change key:
+
+    TAP_PAYMENT_API_KEY=sk_test_AoDCN3uhMc2aFYKzi6sReUgL
+
+
+----------------------------
+
 ## License
 **All rights reserved to Fcode company**
 

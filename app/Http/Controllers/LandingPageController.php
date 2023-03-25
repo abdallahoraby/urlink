@@ -28,6 +28,7 @@ class LandingPageController extends Controller
         $newLandingPage = LandingPage::create([
             'page_account_type' => $request['account_type'],
             'page_name' => $request['page_name'],
+            'page_subdomain' => $request['page_subdomain'],
             'page_title' => $request['page_title'],
             'page_country' => $request['country'],
             'page_city' => $request['city'],
@@ -38,7 +39,7 @@ class LandingPageController extends Controller
             'page_desc' => $request['page_desc'],
             'page_url' => $url ,
             'user_id' => $request->user()->user_id,
-            'style_id' => $defaultStyleId
+            'style_id' => !empty($request['landing_style']) ? $request['landing_style'] : $defaultStyleId
         ]);
         $profileIconName = 'profile_icon.' . $request['page_profile_icon']->getClientOriginalExtension();
         $path = '/assets/users/' . $request->user()->user_id . '/' . $newLandingPage->landing_page_id;
@@ -216,5 +217,9 @@ class LandingPageController extends Controller
         $data['full_name'] = $data->user->full_name;
         $data['avatar'] = ($data->user->avatar != null) ? $data->user->avatar : '/assets/img/default_profile_image.png';
         return $data;
+    }
+
+    public function index($subdomain){
+        return view('landing.landing-index');
     }
 }

@@ -14,11 +14,13 @@ class CreateLandingPagesTable extends Migration
     public function up()
     {
         Schema::create('landing_pages', function (Blueprint $table) {
+
             $table->bigIncrements('landing_page_id');
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
 
             $table->string('page_name');
+            $table->string('page_subdomain');
             $table->string('page_title');
             $table->string('page_profile_icon');
             $table->string('page_profile_banner')->nullable();

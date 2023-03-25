@@ -10,7 +10,7 @@
                 <h5> يرجى ملئ جميع الحقول لإنشاء صفحة هبوط مميزة تثير إهتمام جمهورك </h5>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="main_tabs_box tabs-links card-box main-form ">
                     <form role="form" class="studentform-section" method="post" action="{{ route('post_create_landing_page') }}" enctype="multipart/form-data">
                         @csrf
@@ -43,6 +43,11 @@
                                 </div>
                                 <div class="stepForm-step">
                                     <a href="#step-5" class="btn btn-default btn-circle" disabled="disabled"> </a>
+                                    <div class="clearfix"></div>
+                                    <h4>  ستايل الصفحة  </h4>
+                                </div>
+                                <div class="stepForm-step">
+                                    <a href="#step-6" class="btn btn-default btn-circle" disabled="disabled"> </a>
                                     <div class="clearfix"></div>
                                     <h4>  تأكيد  </h4>
                                 </div>
@@ -116,6 +121,11 @@
                                         <label for=""> المسمى الوظيفي <span class="imp-inp"> * </span></label>
                                         <input type="text" class="form-control" placeholder=" مثال : مصمم جرافيك" name="page_title" required>
                                         <div class="invalid-feedback">من فضل ادخل المسمى الوظيفي صحيح!!  </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""> اسم النطاق الفرعي للصفحة  <span class="imp-inp"> * </span></label>
+                                        <input type="text" class="form-control" placeholder=" مثال :  company-name" name="page_subdomain" required>
+                                        <div class="invalid-feedback">من فضل ادخل اسم النطاق الفرعي للصفحة!!  </div>
                                     </div>
                                     <div class="form-group">
                                         <label for=""> اختر الدولة <span class="imp-inp"> * </span> </label>
@@ -370,8 +380,9 @@
                                     </div>
                                 </div>
 
+
                                 <div class="form-btns">
-                                    <button class="btn main-btn primary-btn nextBtn" onclick="renameSectionsInputs()" type="button"> انشاء </button>
+                                    <button class="btn main-btn secondary-btn nextBtn" onclick="renameSectionsInputs()" type="button"> حفظ واستكمال </button>
                                 </div>
                             </div>
                         </div>
@@ -379,6 +390,23 @@
 
                         <!-- step 5-->
                         <div class="setup-content" id="step-5">
+                            <div class="page-template-item">
+                                <div class="row">
+                                    <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
+                                        @include('styles.get_preview')
+                                    </div>
+                                </div>
+
+                                <div class="form-btns">
+                                    <button class="btn main-btn secondary-btn nextBtn" type="button"> انشاء </button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- // step 5 -->
+
+                        <!-- step 6-->
+                        <div class="setup-content" id="step-6">
                             <div class="page-done-item">
                                 <div class="">
                                     <img src="{{asset('assets/img/done.gif')}}" alt="">
@@ -389,7 +417,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- // step 5 -->
+                        <!-- // step 6 -->
                     </form>
                 </div>
             </div>

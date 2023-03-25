@@ -25,7 +25,7 @@
                     </div>
                     <div class="overlay-status">
                         {{--                        <p class="mb-25"><small>Last updated 3 mins ago</small></p>--}}
-                        <a href="{{ url('/admin/setting/edit-plans') }}" class="btn btn-light-primary"> ادارة </a>
+                        <a href="{{ url('/admin/setting/get-plans') }}" class="btn btn-light-primary"> ادارة </a>
                     </div>
                 </div>
                 <img class="card-img img-fluid" src="{{asset('assets/img/background/bg_img_01.jpg')}}" alt="Card image">

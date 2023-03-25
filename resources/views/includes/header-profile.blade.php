@@ -1,4 +1,5 @@
 <header class="header">
+
 	<nav class="navbar navbar-expand-lg fixed-top" id="nav">
 		<div class="container">
 			<!-- Logo -->
@@ -48,9 +49,12 @@
 						@endauth
 						<a href="{{ url('/user/profile/get') }}" class="btn" type="button"> <img src="{{asset($avatar)}}" alt="">@auth {{ auth()->user()->full_name }} @endauth<i class="fi fi-rr-arrow-small-left"></i></a>
 					</div>
+
+
 				</div>
 			</div>
 		</div>
 	</nav>
+
 </header>
 <!-- header end -->

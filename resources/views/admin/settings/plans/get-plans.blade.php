@@ -7,16 +7,22 @@
 
 <!-- Start Plans -->
 
-<div id="generic_price_table">
+<div id="generic_price_table" class="get-all-plans">
     <section>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <!--PRICE HEADING START-->
-                    <div class="price-heading clearfix">
-                        <h1> خطط الأسعار </h1>
+                    <div class="divider">
+                        <h1 class="divider-text"> ادارة خطط الأسعار  </h1>
                     </div>
                     <!--//PRICE HEADING END-->
+
+                    <div class="d-flex justify-content-start mb-5">
+                        <a href="{{route('add-plan')}}" class="btn btn-primary">
+                            <i class="fa-solid fa-plus"></i> اضافة خطة جديدة
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,7 +58,8 @@
                             endswitch;
                         @endphp
 
-                        <div class="col-md-4">
+
+                        <div class="col-md-4 mb-5">
 
                             <!--PRICE CONTENT START-->
                             <div class="generic_content clearfix">
@@ -90,19 +97,13 @@
                                 <!--FEATURE LIST START-->
                                 <div class="generic_feature_list">
                                     <p>{{$plan->description ?? ''}}</p>
-{{--                                    <ul>--}}
-{{--                                        <li><span>2GB</span> Bandwidth</li>--}}
-{{--                                        <li><span>150GB</span> Storage</li>--}}
-{{--                                        <li><span>12</span> Accounts</li>--}}
-{{--                                        <li><span>7</span> Host Domain</li>--}}
-{{--                                        <li><span>24/7</span> Support</li>--}}
-{{--                                    </ul>--}}
                                 </div>
                                 <!--//FEATURE LIST END-->
 
                                 <!--BUTTON START-->
                                 <div class="generic_price_btn clearfix">
-                                    <a class="" href="{{route('add_subscription', $plan->id)}}"> اشترك </a>
+                                    <a class="" href="{{route('edit-plan', $plan->id)}}"> تعديل </a>
+                                    <a class="btn rounded-pill btn-label-danger" id="delete-plan" href="{{route('delete-plan', $plan->id)}}"> حذف </a>
                                 </div>
                                 <!--//BUTTON END-->
 

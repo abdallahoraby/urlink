@@ -404,5 +404,12 @@ class UsersController extends Controller
 
     }
 
+    public function getLandingPages(){
+        $userId = Auth::id();
+        $data = LandingPageController::getLandingPagesById($userId);
+        $userData = UserController::getUserDataById($userId);
+        return view('landing.get-landing-pages', compact(['data', 'userData']));
+    }
+
 
 }

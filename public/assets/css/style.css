@@ -400,9 +400,12 @@ input:focus, textarea:focus, select:focus {
     padding-right: 15px;
 }
 /* hd-left */
-.hd-left{
+.hd-left {
     display: flex;
     margin-right: 40px;
+    justify-content: center !important;
+    align-content: center !important;
+    gap: 1rem;
 }
 .hd-left .reg-log-buttons{
     background: #ffffff0a;
@@ -3700,11 +3703,190 @@ input[type=checkbox], input[type=radio] {
 }
 
 .left-sec {
-    width: 50%;
+    width: 40%;
 }
 
-.right-sec, .center-sec {
-    width: 25%;
+.center-sec{
+    width: 20%;
+}
+
+.right-sec {
+    width: 40%;
     display: flex;
     justify-content: end;
+    gap: 1rem;
 }
+
+.get-all-plans .divider-text {
+    font-size: 2rem !important;
+    margin-bottom: 1rem;
+}
+
+.get-all-plans button[type="submit"] {
+    display: block;
+    margin: 3rem auto;
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    padding: 0.5rem 3rem;
+}
+
+
+.switch {
+    display: inline-block;
+    position: relative;
+    margin: 0 0 10px;
+    font-size: 16px;
+    line-height: 24px;
+}
+.switch__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 20px;
+    opacity: 0;
+    z-index: 0;
+}
+.switch__label {
+    display: block;
+    padding: 0 0 0 44px;
+    cursor: pointer;
+}
+.switch__label:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 36px;
+    height: 14px;
+    background-color: rgba(0, 0, 0, 0.26);
+    border-radius: 14px;
+    z-index: 1;
+    transition: background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.switch__label:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    z-index: 2;
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: left, background-color;
+}
+.switch__input:checked + .switch__label:before {
+    background-color: rgba(63, 81, 181, 0.5);
+}
+.switch__input:checked + .switch__label:after {
+    left: 16px;
+    background-color: #3f51b5;
+}
+
+.is_active_switch {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 1rem;
+}
+
+.invoice_interval .nice-select.form-select {
+    text-align: initial;
+}
+
+#plan_interval {
+    background-position: left 1rem top 50%;
+}
+
+.get-all-plans .generic_price_btn.clearfix {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 1rem;
+}
+
+.get-all-plans .generic_price_btn * {
+    border-radius: 5px !important;
+    padding: 0.5rem 1rem !important;
+}
+
+.get-all-plans .btn.rounded-pill.btn-label-danger {
+    color: #ff5b5c;
+    background: #ffe5e5;
+    border-color: #ff5b5c;
+}
+
+.get-all-plans .btn.rounded-pill.btn-label-danger:hover{
+    border-color: rgba(0,0,0,0) !important;
+    background: #ff5b5c !important;
+    color: #fff !important;
+}
+
+
+.expire-soon.badge.bg-danger {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: fit-content;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 0.2rem;
+    border: 2px solid #d53333;
+    animation: shadow-pulse;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes shadow-pulse
+{
+    0% {
+        box-shadow: 0 0 0 0px rgba(149, 42, 42, 0.56);
+    }
+
+    20% {
+        box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0);
+    }
+}
+
+.active-sub .right-sec .renew_sub{
+    display: none;
+}
+
+.manage-styles .btn-group {
+    gap: 1rem;
+}
+
+.manage-styles a {
+    border-radius: 5px !important;
+    font-size: 1.2rem;
+    padding: 0.5rem 2rem;
+}
+
+.style-preview {
+    height: 50vh;
+    overflow: auto;
+}
+
+.style-preview img {
+    display: none;
+    margin: 3rem 0;
+}
+

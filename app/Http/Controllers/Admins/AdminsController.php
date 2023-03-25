@@ -12,6 +12,9 @@ use App\Http\Controllers\Validator\ValidateController;
 use App\Models\Page;
 use Auth;
 use DB;
+use Bpuig\Subby\Models\Plan;
+use App\Models\User;
+use Bpuig\Subby\Models\PlanSubscription;
 
 
 class AdminsController extends Controller
@@ -112,8 +115,45 @@ class AdminsController extends Controller
 
     public function getStyles(){
         $styles = LandingStyleController::getAllStyles();
-
         return view('admin.styles.get-styles', compact('styles'));
+    }
+
+    public function getStyle($style_id){
+        $style = LandingStyleController::getStyle($style_id);
+        return view('admin.styles.edit-style', compact('style'));
+    }
+
+    public function updateStyle(Request $request){
+        $validate = ValidateController::validateUpdateStyle($request);
+        if (!empty($validate)) {
+            return redirect()->back()
+                ->withErrors($validate)
+                ->withInput();
+        }
+
+
+        $style_id = $request->input('id');
+        $styleName = $request->input('name');
+        $style_image  = $request->file('image');
+        $style_fee = $request->input('fee');
+        $status = $request->input('status');
+
+        // handle image upload
+        if( !empty($style_image) ):
+            $style_image_name = LandingStyleController::uploadStyleImage($style_image);
+        endif;
+
+        $style_image_name = !empty($style_image_name) ? $style_image_name : '';
+
+        $update_style = LandingStyleController::updateStyleData($style_id,$styleName, $style_fee, $status, $style_image_name);
+
+        if( $update_style ):
+            return redirect()->route('get_styles')->withSuccess('تم تعديل الستايل بنجاح');
+        else:
+            return redirect()->back()->withErrors('حدث خطأ اثناء تعديل البيانات');
+        endif;
+
+
     }
 
     public function GET_Setting(){
@@ -214,5 +254,130 @@ class AdminsController extends Controller
         return redirect()->route('setting');
     }
 
+    public function getAllPlans(){
+        $plans = Plan::select('id', 'tag', 'name', 'description', 'is_active', 'price', 'currency', 'invoice_period', 'invoice_interval')->whereNull('deleted_at')->get();
+        return view('admin.settings.plans.get-plans', compact('plans'));
+    }
+
+    public function editPlan($plan_id){
+        $plan_data = Plan::select('id', 'tag', 'name', 'description', 'is_active', 'price', 'currency', 'invoice_period', 'invoice_interval')->where('id', '=', $plan_id)->get();
+        if( !empty($plan_data) ):
+            $plan = $plan_data[0];
+            return view('admin.settings.plans.edit-plan', compact('plan'));
+        else:
+            return redirect()->back()->withErrors('حدث خطأ يرجي المحاولة مرة أخري');
+        endif;
+    }
+
+    public function updatePlan(Request $request){
+        // validate request
+        $validate = ValidateController::validateEditPlan($request);
+
+        if (!empty($validate)) {
+            return redirect()->back()
+                ->withErrors($validate)
+                ->withInput();
+        }
+
+        // handle save data
+        $plan_id = $request->input('plan_id');
+        $plan_name = $request->input('plan_name');
+        $plan_description = $request->input('plan_description');
+        $plan_price = $request->input('plan_price');
+        $plan_period = $request->input('plan_period');
+        $plan_interval = $request->input('plan_interval');
+        $plan_is_active = ($request->input('plan_is_active') === 'on') ? 1 : 0 ;
+
+
+        $update = Plan::where('id', $plan_id)
+            ->update([
+                'name' => $plan_name,
+                'description' => $plan_description,
+                'price' => $plan_price,
+                'invoice_period' => $plan_period,
+                'invoice_interval' => $plan_interval,
+                'is_active' => $plan_is_active
+            ]);
+
+        if($update):
+            return redirect()->back()->withSuccess('تم تعديل الخطة بنجاح');
+        else:
+            return redirect()->back()->withErrors('حدث خطأ في تعديل البيانات يرجي المحاولة مرة أخري');
+        endif;
+
+
+    }
+
+    public function deletePlan($plan_id){
+        $plan_id = (int) $plan_id;
+        $plan = Plan::find($plan_id);
+        $delete = $plan->delete();
+
+        if($delete):
+            return redirect()->back()->withSuccess('تم حذف الخطة بنجاح');
+        else:
+            return redirect()->back()->withErrors('حدث خطأ في حذف البيانات يرجي المحاولة مرة أخري');
+        endif;
+
+
+    }
+
+    public function addPlanView(){
+        return view('admin.settings.plans.add-plan');
+    }
+
+    public function addPlan(Request $request){
+
+        // validate request
+        $validate = ValidateController::validateAddPlan($request);
+
+        if (!empty($validate)) {
+            return redirect()->back()
+                ->withErrors($validate)
+                ->withInput();
+        }
+
+        // handle save data
+        $plan_name = $request->input('plan_name');
+        $plan_description = $request->input('plan_description');
+        $plan_price = $request->input('plan_price');
+        $plan_period = $request->input('plan_period');
+        $plan_interval = $request->input('plan_interval');
+        $plan_is_active = ($request->input('plan_is_active') === 'on') ? 1 : 0 ;
+
+        // send to model
+        $add_plan = Plan::create([
+            'tag' => strtolower($plan_name) . '-' . rand(1,100),
+            'name' => $plan_name,
+            'description' => $plan_description,
+            'is_active' => $plan_is_active,
+            'price' => $plan_price,
+            'signup_fee' => 0,
+            'currency' => 'ر.س',
+            'trial_period' => 0,
+            'trial_interval' => 'day',
+            'trial_mode' => 'outside',
+            'grace_period' => 0,
+            'grace_interval' => 'day',
+            'invoice_period' => $plan_period,
+            'invoice_interval' => $plan_interval,
+            'tier' => 1,
+        ]);
+
+        if($add_plan):
+            $plans = Plan::select('id', 'tag', 'name', 'description', 'is_active', 'price', 'currency', 'invoice_period', 'invoice_interval')->whereNull('deleted_at')->get();
+            return redirect('/admin/setting/get-plans')->with(['plans' => $plans])->withSuccess('تم اضافة الخطة بنجاح');
+        else:
+            return redirect()->back()->withErrors('حدث خطأ في حفظ البيانات يرجي المحاولة مرة أخري');
+        endif;
+
+
+
+    }
+
+    public function manageUsersSubs($user_id){
+        $user_data = User::find($user_id);
+        return view('admin.users.manage-subs', compact('user_data'));
+    }
 
 }

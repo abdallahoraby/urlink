@@ -395,6 +395,36 @@ class ValidateController extends Controller
         return 0;
     }
 
+    public static function validateUpdateStyle($request, $api = false){
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string',
+            'fee' => 'required|string|in:free,fee',
+            'status' => 'required|numeric|in:0,1',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        if($api == true){
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                foreach($errors->all() as $error){
+                    $err = $error;
+                    break;
+                }
+                $output = array(
+                    'code' => 400,
+                    'message' => $err
+                );
+                return $output;
+            }
+        }else{
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $errors;
+            }
+        }
+        return 0;
+    }
+
     public static function validateEditPage($request, $api = false){
 
         $validator = Validator::make($request->all(),[
@@ -406,6 +436,75 @@ class ValidateController extends Controller
             'section_1.button_1_link' => 'string',
             'section_1.button_2_text' => 'string',
             'section_1.button_2_link' => 'string',
+        ]);
+
+
+        if($api == true){
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                foreach($errors->all() as $error){
+                    $err = $error;
+                    break;
+                }
+                $output = array(
+                    'code' => 400,
+                    'message' => $err
+                );
+                return $output;
+            }
+        }else{
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $errors;
+            }
+        }
+        return 0;
+
+    }
+
+    public static function validateEditPlan($request, $api = false){
+
+        $validator = Validator::make($request->all(),[
+            'plan_id' => 'required|numeric',
+            'plan_name' => 'required|string',
+            'plan_description' => 'string',
+            'plan_price' => 'required|numeric',
+            'plan_period' => 'required|numeric',
+            'plan_interval' => 'required|string',
+        ]);
+
+
+        if($api == true){
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                foreach($errors->all() as $error){
+                    $err = $error;
+                    break;
+                }
+                $output = array(
+                    'code' => 400,
+                    'message' => $err
+                );
+                return $output;
+            }
+        }else{
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $errors;
+            }
+        }
+        return 0;
+
+    }
+
+    public static function validateAddPlan($request, $api = false){
+
+        $validator = Validator::make($request->all(),[
+            'plan_name' => 'required|string',
+            'plan_description' => 'string',
+            'plan_price' => 'required|numeric',
+            'plan_period' => 'required|numeric',
+            'plan_interval' => 'required|string',
         ]);
 
 

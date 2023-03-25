@@ -13,6 +13,7 @@
         "darkaonline/l5-swagger": "6.*",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^1.0",
+        "groupedesign/tap-payments-laravel": "dev-main",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
         "shetabit/visitor": "^3.1",

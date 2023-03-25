@@ -1,6 +1,5 @@
 @extends('includes.head')
 
-
 	<!-- Landing Page -->
 	<div class="landing-page-area bg2 no-top-mrg padd-50">
 		<div class="container">

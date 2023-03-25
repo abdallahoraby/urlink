@@ -91,13 +91,14 @@ $conn->close();
                                             <th>حالة التصميم</th>
                                             <th>نشاط التصميم</th>
                                             <th>التصميم الافتراضي</th>
+											<th> تعديل </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                 @foreach($styles as $style)
                                             <tr>
                                             <td>{{$style->style_name}}</td>
-                                            <td>{{$style->style_image}}</td>
+                                            <td><img style="height: 120px;object-fit: cover;object-position: top;width: 100%;" src="{{asset($style->style_image)}}" alt=""></td>
                                             <td>{{$style->style_fee}}</td>
                                             @if($style->status == 1)
                                             <td>نشط</td>
@@ -109,6 +110,7 @@ $conn->close();
                                             <i class="fa-solid fa-key"></i>
                                             @endif
                                             </td>
+												<td><a href="{{route('edit-style', $style->style_id)}}" class="btn btn-primary"> تعديل التصميم </a> </td>
                                             </tr>
                                 @endforeach
                                             </tbody>

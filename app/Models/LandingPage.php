@@ -18,6 +18,7 @@ class LandingPage extends Model
 
     protected $fillable = [
         'page_name',
+        'page_subdomain',
         'page_title',
         'page_profile_icon',
         'page_profile_banner',
