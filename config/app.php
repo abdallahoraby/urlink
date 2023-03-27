@@ -164,7 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-        \Groupedesign\TapPayment\TapPaymentServiceProvider::class,
+        // \Groupedesign\TapPayment\TapPaymentServiceProvider::class,
 
         /*
          * Package Service Providers...
