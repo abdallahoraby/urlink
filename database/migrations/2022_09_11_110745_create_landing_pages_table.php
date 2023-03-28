@@ -38,7 +38,7 @@ class CreateLandingPagesTable extends Migration
             $table->string('page_url')->unique();
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('style_id');
             $table->foreign('style_id')->references('style_id')->on('landing_styles');

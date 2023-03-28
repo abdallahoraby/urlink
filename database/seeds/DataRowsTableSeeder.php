@@ -260,7 +260,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => 4,
             ])->save();
         }
-
         $dataRow = $this->dataRow($roleDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -335,7 +334,6 @@ class DataRowsTableSeeder extends Seeder
                 'order'        => 5,
             ])->save();
         }
-
         $dataRow = $this->dataRow($userDataType, 'role_id');
         if (!$dataRow->exists) {
             $dataRow->fill([

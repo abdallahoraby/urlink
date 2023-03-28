@@ -25,7 +25,7 @@ class CreateContactUsTable extends Migration
             $table->string('ip_address', 45)->nullable();
 
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->softDeletes();
             $table->timestamps();

@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Setting extends Model
 {
-    use SoftDeletes;
+    // use SoftDeletes;
     protected $table = "settings";
 
     protected $primaryKey = "setting_id";
 
-    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['created_at', 'updated_at'];
 
     protected $fillable = [
         'key',
         'value',
-        'type'
+        'type',
+        'display_name'
     ];
 }

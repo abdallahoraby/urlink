@@ -3,6 +3,7 @@
 namespace App\Models;
 
 /* use Shetabit\Visitor\Traits\Visitable; */
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -49,7 +50,20 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-     /**
+    public static function boot()
+    {
+        parent::boot();
+        /**
+         * 
+         *
+         * @return response()
+         */
+        static::created(function ($user) {
+            $user->user_id = $user->id;
+        });
+    }
+
+    /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed
@@ -74,10 +88,9 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo('App\User', 'user_id')->withTrashed();
     }
 
-    public function user_messages(){
+    public function user_messages()
+    {
 
         return $this->hasMany('App\Models\ContactUs');
     }
-    
-
 }

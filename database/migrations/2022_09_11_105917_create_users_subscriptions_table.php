@@ -24,7 +24,7 @@ class CreateUsersSubscriptionsTable extends Migration
             $table->decimal('subscription_amount', 10, 2)->default(0);
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->softDeletes();
 

@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\CustomClass\Hashed;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class CreateUsersTable extends Migration
 {
@@ -16,10 +18,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             // How !
-            $table->bigIncrements('user_id');
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
-            // $table->bigIncrements('id');
+            $table->bigIncrements('id');
+            $table->integer('user_id')->nullable();
             $table->string('full_name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -38,13 +40,15 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        \DB::statement('UPDATE users SET user_id = id');
+
         $hashPass = new Hashed();
-        $hashPass->set_pass('fahad123', 'fahad@fcode.sa');
-        $hash = $hashPass->get_hash();
-        $password = Hash::make($hash);
-        DB::table('users')->insert(['full_name' => 'Mr-Fahad', 'email' => 'fahad@fcode.sa',
-            'password' => $password, 'isAdmin' => 1
-    ]);
+        DB::table('users')->insert([
+            'full_name' => 'zanaty', 'email' => 'admin@admin.com',
+            'password' => bcrypt('password'), 'isAdmin' => 1,
+            'user_id' => 1
+
+        ]);
     }
 
     /**
